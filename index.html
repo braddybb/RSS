@@ -14,7 +14,7 @@
     --muted:    #9a9a94;               /* dates                    */
     --body:     #cfcfca;               /* story summary            */
     --hairline: rgba(255,255,255,0.14);/* dividers                 */
-    --card:     rgba(255,255,255,0.12);/* card border, matches site*/
+    --card:     #404040;               /* card border, matches site   */
   }
 
   *{ box-sizing: border-box; }
@@ -30,7 +30,7 @@
   /* The card — same bordered, rounded, padded look as FEATURED / THE LATEST */
   .card{
     border: 1px solid var(--card);
-    border-radius: 12px;
+    border-radius: 10px;
     padding: 24px;
   }
 
@@ -49,13 +49,13 @@
   .feed{ list-style: none; margin: 0; padding: 0; }
 
   .item{
-    padding: 18px 0;
-    border-bottom: 1px solid var(--hairline);
+    padding: 16px 0;
     opacity: 0;
     transform: translateY(6px);
     animation: rise .45s ease forwards;
   }
-  .item:last-child{ border-bottom: 0; padding-bottom: 0; }
+  .item:first-child{ padding-top: 10px; }
+  .item:last-child{ padding-bottom: 0; }
 
   @keyframes rise{ to{ opacity: 1; transform: none; } }
   @media (prefers-reduced-motion: reduce){
