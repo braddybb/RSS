@@ -1,18 +1,19 @@
 const Parser = require('rss-parser');
 
 // ============================================================
-//  EDIT THIS LIST  ->  one line per publication.
+//  YOUR PUBLICATIONS  ->  one line each.
 //  - name:  what shows on the little coloured tag
-//  - color: the tag colour (any hex code)
-//  - url:   the publication's RSS feed URL from beehiiv (ends in .xml)
-//  Add or remove lines freely. Keep the commas and the { } brackets.
+//  - color: the tag colour
+//  - url:   that publication's RSS feed URL from beehiiv
+//  To change a colour or name, just edit the line. To add another
+//  masthead later, copy a line. Keep the commas and { } brackets.
 // ============================================================
 const FEEDS = [
-  { name: 'Eastern Melburnian',   color: '#F1BF94', url: 'https://PASTE-EASTERN-MELBURNIAN-FEED.xml' },
-  { name: 'North Shore Lorikeet', color: '#EE363A', url: 'https://PASTE-NORTH-SHORE-LORIKEET-FEED.xml' },
-  { name: 'West Vic Brolga',      color: '#89C540', url: 'https://PASTE-WEST-VIC-BROLGA-FEED.xml' },
-  { name: 'Gippsland Monitor',    color: '#31BBE3', url: 'https://PASTE-GIPPSLAND-MONITOR-FEED.xml' },
-  { name: 'Mid North Coaster',    color: '#FBDA3B', url: 'https://PASTE-MID-NORTH-COASTER-FEED.xml' },
+  { name: 'West Vic Brolga',        color: '#89C540', url: 'https://rss.beehiiv.com/feeds/rWU61eTKgk.xml' },
+  { name: 'The Eastern Melburnian', color: '#F1BF94', url: 'https://rss.beehiiv.com/feeds/v4KqR6IYHV.xml' },
+  { name: 'The Gippsland Monitor',  color: '#31BBE3', url: 'https://rss.beehiiv.com/feeds/GfknAGg8bz.xml' },
+  { name: 'North Shore Lorikeet',   color: '#EE363A', url: 'https://rss.beehiiv.com/feeds/o4BOumGiEp.xml' },
+  { name: 'Mid North Coaster',      color: '#FBDA3B', url: 'https://rss.beehiiv.com/feeds/yTW1DMWzXw.xml' },
 ];
 
 // How many stories the column shows at once.
