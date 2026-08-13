@@ -46,6 +46,21 @@
   }
   .rule{ height: 1px; background: var(--hairline); margin-bottom: 2px; }
 
+  /* "Live" blinking dot next to the heading */
+  .live-dot{
+    display: inline-block;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: #ED3B3B;      /* live red — swap for #D73D40 to match the brand red */
+    margin-left: 10px;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+    animation: liveblink 1.2s ease-in-out infinite;
+  }
+  @keyframes liveblink{ 0%, 100%{ opacity: 1; } 50%{ opacity: .18; } }
+  @media (prefers-reduced-motion: reduce){ .live-dot{ animation: none; } }
+
   .feed{ list-style: none; margin: 0; padding: 0; }
 
   .item{
@@ -109,7 +124,7 @@
 <body>
   <div class="card">
     <!-- Change these words to rename the column -->
-    <h2 class="eyebrow">The Network</h2>
+    <h2 class="eyebrow">The Network<span class="live-dot" aria-hidden="true"></span></h2>
     <div class="rule"></div>
 
     <ul class="feed" id="feed" aria-live="polite">
