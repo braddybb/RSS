@@ -16,7 +16,7 @@ const FEEDS = [
 
 // How many stories the column shows. Lower this if the column runs
 // taller than FEATURED and you want them to line up; raise it to show more.
-const MAX_ITEMS = 6;
+const MAX_ITEMS = 4;
 
 // ------------------------------------------------------------
 // You shouldn't need to touch anything below this line.
