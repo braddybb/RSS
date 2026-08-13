@@ -1,0 +1,6 @@
+# Tells Netlify where to find the function. Nothing to edit here.
+[build]
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
