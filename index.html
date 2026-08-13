@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,65 +7,55 @@
 <title>The Network</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet" />
 <style>
-  /* ---- The one line you might want to change: the heading text ---- */
-  /* (find <h2 class="eyebrow"> further down and edit the words there) */
-
   :root{
-    --ink:      #F6F3F0;  /* headlines / main text  */
-    --muted:    #9a9a94;  /* dates, quiet text      */
-    --body:     #c8c8c2;  /* story summary text     */
-    --accent:   #D73D40;  /* National Account red   */
-    --hairline: rgba(255,255,255,0.12);
+    --ink:      #F6F3F0;               /* headlines / heading      */
+    --muted:    #9a9a94;               /* dates                    */
+    --body:     #cfcfca;               /* story summary            */
+    --hairline: rgba(255,255,255,0.14);/* dividers                 */
+    --card:     rgba(255,255,255,0.12);/* card border, matches site*/
   }
 
   *{ box-sizing: border-box; }
 
   html, body{
     margin: 0;
-    background: transparent;   /* lets the black page behind show through */
+    background: transparent;   /* lets the black page show through */
     color: var(--ink);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 
-  .wrap{ padding: 4px 2px 24px; max-width: 460px; }
+  /* The card — same bordered, rounded, padded look as FEATURED / THE LATEST */
+  .card{
+    border: 1px solid var(--card);
+    border-radius: 12px;
+    padding: 24px;
+  }
 
-  /* Section heading, echoing FEATURED / THE LATEST on the site */
+  /* Section heading, matching FEATURED / THE LATEST */
   .eyebrow{
-    font-family: "Oswald", sans-serif;
-    font-weight: 700;
+    font-family: 'Archivo Black', sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 22px;
-    margin: 0 0 12px;
+    font-size: 22px;          /* a touch under the site's 24px so it fits the narrow column */
+    line-height: 1.1;
+    letter-spacing: 0;
+    margin: 0 0 10px;
     color: var(--ink);
   }
-  .rule{
-    height: 2px;
-    background: var(--hairline);
-    position: relative;
-    margin-bottom: 8px;
-  }
-  .rule::before{  /* short red accent under the heading */
-    content: "";
-    position: absolute;
-    left: 0; top: 0;
-    width: 44px; height: 2px;
-    background: var(--accent);
-  }
+  .rule{ height: 1px; background: var(--hairline); margin-bottom: 2px; }
 
   .feed{ list-style: none; margin: 0; padding: 0; }
 
   .item{
-    padding: 20px 0;
+    padding: 18px 0;
     border-bottom: 1px solid var(--hairline);
     opacity: 0;
     transform: translateY(6px);
     animation: rise .45s ease forwards;
   }
-  .item:last-child{ border-bottom: 0; }
+  .item:last-child{ border-bottom: 0; padding-bottom: 0; }
 
   @keyframes rise{ to{ opacity: 1; transform: none; } }
   @media (prefers-reduced-motion: reduce){
@@ -72,52 +63,51 @@
   }
 
   .date{
+    font-family: 'Archivo', sans-serif;
     font-size: 12px;
     color: var(--muted);
-    letter-spacing: 0.02em;
     margin-bottom: 8px;
   }
 
   .headline{
     display: inline-block;
-    font-family: "Oswald", sans-serif;
-    font-weight: 600;
+    font-family: 'Archivo Black', sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.01em;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.2;
+    letter-spacing: 0;
     color: var(--ink);
     text-decoration: none;
     margin: 0 0 8px;
     transition: color .15s ease;
   }
   .headline:hover,
-  .headline:focus-visible{ color: var(--accent); }
-  .headline:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+  .headline:focus-visible{ color: #D73D40; }   /* National Account red on hover */
+  .headline:focus-visible{ outline: 2px solid #D73D40; outline-offset: 3px; }
 
   .summary{
-    font-size: 13.5px;
-    line-height: 1.5;
+    font-family: 'Archivo', sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
     color: var(--body);
     margin: 0 0 12px;
   }
 
   .tag{
     display: inline-block;
-    font-family: "Oswald", sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    font-size: 11px;
-    padding: 3px 9px;
-    border-radius: 4px;
+    font-size: 11.5px;
+    line-height: 1;
+    padding: 4px 10px;
+    border-radius: 5px;
   }
 
-  .state{ color: var(--muted); font-size: 14px; padding: 24px 0; }
+  .state{ font-family: 'Archivo', sans-serif; color: var(--muted); font-size: 14px; padding: 8px 0 4px; }
 </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="card">
     <!-- Change these words to rename the column -->
     <h2 class="eyebrow">The Network</h2>
     <div class="rule"></div>
@@ -128,8 +118,7 @@
   </div>
 
 <script>
-  // Where to open articles: '_blank' = new tab (keeps readers on your page).
-  const OPEN_IN = '_blank';
+  const OPEN_IN = '_blank';   // open articles in a new tab
 
   const feedEl  = document.getElementById('feed');
   const stateEl = document.getElementById('state');
@@ -138,10 +127,11 @@
     if(!iso) return '';
     const d = new Date(iso);
     if(isNaN(d)) return '';
-    return d.toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
+    // "Aug 13, 2026" — matches the site's date style
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   }
 
-  // Pick black or white tag text depending on how light the tag colour is.
+  // Black or white tag text depending on how light the tag colour is.
   function textOn(hex){
     const c = hex.replace('#','');
     const r = parseInt(c.substr(0,2),16), g = parseInt(c.substr(2,2),16), b = parseInt(c.substr(4,2),16);
@@ -155,11 +145,18 @@
     ));
   }
 
+  // Tell the parent page how tall we are, so the embed grows to fit
+  // exactly and never cuts a story off.
+  function postHeight(){
+    const h = Math.ceil(document.body.getBoundingClientRect().height) + 2;
+    if(window.parent){ window.parent.postMessage({ __networkFeedHeight: h }, '*'); }
+  }
+
   fetch('/.netlify/functions/feed')
     .then(r => r.json())
     .then(data => {
       const items = (data && data.items) || [];
-      if(!items.length){ stateEl.textContent = 'No stories yet.'; return; }
+      if(!items.length){ stateEl.textContent = 'No stories yet.'; postHeight(); return; }
 
       feedEl.innerHTML = items.map(it => {
         const date    = fmtDate(it.date);
@@ -173,10 +170,18 @@
             <span class="tag" style="background:${esc(it.color)};color:${tagText}">${esc(it.masthead)}</span>
           </li>`;
       }).join('');
+
+      postHeight();
     })
     .catch(() => {
       stateEl.textContent = "Couldn't load the network feed right now. Refresh to try again.";
+      postHeight();
     });
+
+  // Re-measure after fonts load and if the window changes size.
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(postHeight); }
+  window.addEventListener('load', postHeight);
+  window.addEventListener('resize', postHeight);
 </script>
 </body>
 </html>
