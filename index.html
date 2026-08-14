@@ -27,11 +27,10 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* The card — same bordered, rounded, padded look as FEATURED / THE LATEST */
+  /* Border + padding now come from the Beehiiv column itself, so the
+     card stretches to full height like FEATURED and THE LATEST. */
   .card{
-    border: 1px solid var(--card);
-    border-radius: 10px;
-    padding: 24px;
+    padding: 0;
   }
 
   /* Section heading, matching FEATURED / THE LATEST */
@@ -44,8 +43,6 @@
     margin: 0 0 10px;
     color: var(--ink);
   }
-  .rule{ height: 1px; background: var(--hairline); margin-bottom: 2px; }
-
   /* "Live" blinking dot next to the heading */
   .live-dot{
     display: inline-block;
@@ -125,7 +122,6 @@
   <div class="card">
     <!-- Change these words to rename the column -->
     <h2 class="eyebrow">The Network<span class="live-dot" aria-hidden="true"></span></h2>
-    <div class="rule"></div>
 
     <ul class="feed" id="feed" aria-live="polite">
       <li class="state" id="state">Loading the network&hellip;</li>
