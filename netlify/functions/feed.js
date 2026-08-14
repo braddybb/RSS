@@ -44,6 +44,12 @@ function shorten(text, limit) {
   return clean.length > limit ? clean.slice(0, limit).trim() + '\u2026' : clean;
 }
 
+// Reduce a headline to a comparable form (lowercase, letters/numbers only),
+// so the same story from two mastheads is recognised as a match.
+function normaliseTitle(t) {
+  return (t || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
 async function loadFeed(f) {
   try {
     const res = await fetch(f.url, {
@@ -81,6 +87,20 @@ exports.handler = async function () {
     seen.add(it.link);
     return true;
   });
+
+  // Same story republished across mastheads: when two items share a
+  // headline, keep only the one that was published first.
+  const byHeadline = new Map();
+  for (const it of items) {
+    const key = normaliseTitle(it.title) || ('link:' + it.link);
+    const existing = byHeadline.get(key);
+    if (!existing) {
+      byHeadline.set(key, it);
+    } else if (new Date(it.date || 0) < new Date(existing.date || 0)) {
+      byHeadline.set(key, it); // this copy is older — it's the first published
+    }
+  }
+  items = Array.from(byHeadline.values());
 
   items.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
   items = items.slice(0, MAX_ITEMS);
